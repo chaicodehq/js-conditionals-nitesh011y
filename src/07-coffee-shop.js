@@ -32,4 +32,27 @@
  */
 export function calculateCoffeePrice(size, type, extras = {}) {
   // Your code here
+  const sizePrice = {
+    small: 3.0,
+    medium: 4.0,
+    large: 5.0,
+  };
+
+  const typePrice = {
+    regular: 0.0,
+    latte: 1.0,
+    cappuccino: 1.5,
+    mocha: 2.0,
+  };
+
+  if (!sizePrice[size] || typePrice[type] === undefined) {
+    return -1;
+  }
+
+  let total = sizePrice[size] + typePrice[type];
+
+  if (extras.whippedCream) total += 0.5;
+  if (extras.extraShot) total += 0.75;
+
+  return Number(total.toFixed(2));
 }
